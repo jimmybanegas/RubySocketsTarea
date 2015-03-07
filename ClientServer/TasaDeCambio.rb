@@ -1,0 +1,2 @@
+class TasaDeCambio
+end
