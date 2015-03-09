@@ -4,7 +4,6 @@ require_relative   'Empleado'
 
 class Menu
   op = OpcionesDeMenu.new
-  emp = Empleado.new
 
   while true
     print "\n1. Agregar\n"+
@@ -18,9 +17,12 @@ class Menu
 
     case opcion
       when 1
-        puts emp.get_next_codigo
-        emp =op.agregar
-        puts emp
+        emp = op.agregar
+        if emp== nil
+          print 'NULO'
+        else
+          puts emp.to_s
+        end
       when 2
         print "Ingrese codigo del empleado: "
         codigo = gets.chomp

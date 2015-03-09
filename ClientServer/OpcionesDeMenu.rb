@@ -1,3 +1,6 @@
+require_relative   'Empleado'
+require_relative   'Validaciones'
+
 class OpcionesDeMenu
   def agregar
     print "\nIngrese nombre: "
@@ -15,8 +18,14 @@ class OpcionesDeMenu
     print "Ingrese teléfono: "
     telefono = gets.chomp
 
-    return nombre+correo
 
+    if(Validaciones.correo_es_valido(correo) && Validaciones.identidad_es_valida(identidad)&&
+        Validaciones.nombre_es_valido(nombre) && Validaciones.salario_es_valido(salario) && Validaciones.telefono_es_valido(telefono))
+          emp=Empleado.new(Empleado.get_next_codigo,nombre,correo,salario,identidad,telefono)
+      return emp
+    else
+      return nil
+    end
   end
 
   def buscar codigo
