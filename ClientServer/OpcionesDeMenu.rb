@@ -2,7 +2,7 @@ require_relative   'Empleado'
 require_relative   'Validaciones'
 
 class OpcionesDeMenu
-  def agregar
+  def self.agregar
     print "\nIngrese nombre: "
     nombre = gets.chomp
 
@@ -28,7 +28,7 @@ class OpcionesDeMenu
     end
   end
 
-  def buscar codigo
+  def self.buscar codigo
     if(codigo=='A')
       return "Hola A"
     else
@@ -40,7 +40,7 @@ class OpcionesDeMenu
 
   end
 
-  def modificar codigo
+  def self.modificar codigo
 
   end
 

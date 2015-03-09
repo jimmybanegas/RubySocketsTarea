@@ -3,7 +3,6 @@ require_relative   'Empleado'
 
 
 class Menu
-  op = OpcionesDeMenu.new
 
   while true
     print "\n1. Agregar\n"+
@@ -14,10 +13,9 @@ class Menu
     print "Ingrese una opcion: "
     opcion = Integer(gets.chomp)
 
-
     case opcion
       when 1
-        emp = op.agregar
+        emp = OpcionesDeMenu.agregar
         if emp== nil
           print 'NULO'
         else
@@ -27,12 +25,12 @@ class Menu
         print "Ingrese codigo del empleado: "
         codigo = gets.chomp
 
-        op.modificar(codigo)
+        OpcionesDeMenu.modificar(codigo)
       when 3
         print "Ingrese codigo del empleado: "
         codigo = gets.chomp
 
-        resp = op.buscar(codigo)
+        resp = OpcionesDeMenu.buscar(codigo)
         puts resp
       when 4
         op.listar
