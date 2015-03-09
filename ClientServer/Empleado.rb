@@ -11,8 +11,7 @@ class Empleado
 
   def initialize codigo, nombre, correo,sueldo, identidad, telefono
     @codigo = codigo
-    @nombre = nombre
-    @correo = correo
+    @nombre = nombre    @correo = correo
     @sueldo = sueldo
     @identidad = identidad
     @telefono = telefono
@@ -25,6 +24,5 @@ class Empleado
   def to_s
     return codigo+' '+nombre+' '+correo+' '+sueldo+' '+identidad+' '+telefono
   end
-
 
 end
