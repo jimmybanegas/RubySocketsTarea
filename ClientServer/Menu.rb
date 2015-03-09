@@ -1,6 +1,6 @@
-require_relative   'OpcionesDeMenu'
-require_relative   'Empleado'
-
+require_relative 'OpcionesDeMenu'
+require_relative 'Empleado'
+require_relative 'Archivos'
 
 class Menu
 
@@ -19,22 +19,22 @@ class Menu
         if emp== nil
           print 'NULO'
         else
-          puts emp.to_s
+          Archivos.escribir(emp.to_s)
         end
       when 2
         print "Ingrese codigo del empleado: "
-        codigo = gets.chomp
-
-        OpcionesDeMenu.modificar(codigo)
+       # codigo = gets.chomp
+        #OpcionesDeMenu.modificar(codigo)
+        Archivos.editar('HL54 Jimmy Ramos jimmy@gmail.com 6500.30 1806199800495 95621230','HL54 Josue Banegas jimmy@gmail.com 6500.30 1806199800495 95621230')
       when 3
         print "Ingrese codigo del empleado: "
         codigo = gets.chomp
 
-        resp = OpcionesDeMenu.buscar(codigo)
-        puts resp
+        Archivos.buscar codigo
+       # resp = OpcionesDeMenu.buscar(codigo)
+       # puts resp
       when 4
-        op.listar
-        break
+        Archivos.listar
       when 5
         break
     end
