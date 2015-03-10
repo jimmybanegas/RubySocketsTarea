@@ -4,7 +4,7 @@ class Validaciones
     if correo.to_s.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
       return true
     else
-      print 'Correo no valido'
+      print '\nCorreo no valido\n'
       return false
     end
   end
@@ -13,7 +13,7 @@ class Validaciones
     if identidad.to_s.match(/(\d{13})/)
       return true
     else
-      print 'Identidad no valido'
+      print '\nIdentidad no valido\n'
       return false
     end
   end
@@ -22,7 +22,7 @@ class Validaciones
     if telefono.to_s.match(/(\d{8})/)
       return true
     else
-      print 'Telefono no valido'
+      print '\nTelefono no valido\n'
       return false
     end
   end
@@ -31,7 +31,7 @@ class Validaciones
    if salario.to_s.match(/[+-]?\d+(\.\d+)?/)
      return true
    else
-     print 'Salario no valido'
+     print '\nSalario no valido\n'
      return false
    end
   end
@@ -40,7 +40,7 @@ class Validaciones
     if codigo.to_s.match(/^[A-Z]{2}[0-9]{2}$/)
       return true
     else
-      print 'Codigo no valido'
+      print '\nCodigo no valido\n'
       return false
     end
   end
@@ -49,7 +49,7 @@ class Validaciones
    if nombre.to_s.match(/^[A-Za-záéíóúñ]{2,}([\s][A-Za-záéíóúñ]{2,})+$/)
      return true
    else
-     print 'Nombre no valido'
+     print '\nNombre no valido\n'
      return false
    end
   end

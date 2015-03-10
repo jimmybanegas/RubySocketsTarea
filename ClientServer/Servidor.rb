@@ -1,11 +1,28 @@
-class Servidor
-  require 'socket'
-  a = TCPServer.new('', 3333) # '' means to bind to "all interfaces", same as nil or '0.0.0.0'
-  loop {
-    connection = a.accept
-    puts "received:" + connection.recv(1024)
-    connection.puts Time.now.ctime
-    connection.write 'got something--closing now--here is your response message from the server'
+require_relative 'Archivos'
 
-  }
+class Servidor
+
+  def self.iniciarServidor
+    require 'socket'
+    a = TCPServer.new('', 3333)
+    loop {
+      connection = a.accept
+      text = connection.recv(1024)
+
+      array_values = text.split("\n")
+
+      if array_values[0] == 'Agregar'
+        connection.write Archivos.escribir(array_values[1])
+      elsif array_values[0] == 'Modificar'
+        connection.write Archivos.editar(array_values[1],array_values[3])
+      elsif array_values[0] == 'Buscar'
+        connection.write Archivos.buscar(array_values[1])
+      elsif array_values[0] == 'Listar'
+        connection.write Archivos.listar
+      end
+    }
+  end
+
+  iniciarServidor
+
 end

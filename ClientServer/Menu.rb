@@ -1,6 +1,7 @@
 require_relative 'OpcionesDeMenu'
 require_relative 'Empleado'
 require_relative 'Archivos'
+require_relative 'Cliente'
 
 class Menu
 
@@ -15,26 +16,31 @@ class Menu
 
     case opcion
       when 1
-        emp = OpcionesDeMenu.agregar
-        if emp== nil
-          print 'NULO'
-        else
-          Archivos.escribir(emp.to_s)
+        emp = OpcionesDeMenu.agregar Empleado.get_next_codigo
+        if emp!= nil
+          puts Cliente.iniciarCliente 'Agregar'+"\n"+emp.to_s
         end
       when 2
-        print "Ingrese codigo del empleado: "
-       # codigo = gets.chomp
-        #OpcionesDeMenu.modificar(codigo)
-        Archivos.editar('HL54 Jimmy Ramos jimmy@gmail.com 6500.30 1806199800495 95621230','HL54 Josue Banegas jimmy@gmail.com 6500.30 1806199800495 95621230')
-      when 3
-        print "Ingrese codigo del empleado: "
+        print "Ingrese codigo del empleado a modificar: "
         codigo = gets.chomp
 
-        Archivos.buscar codigo
-       # resp = OpcionesDeMenu.buscar(codigo)
-       # puts resp
+        antiguo = Cliente.iniciarCliente 'Buscar'+"\n"+codigo.to_s
+        puts antiguo
+
+        if !antiguo.to_s.include? 'No se encontro'
+          nuevo = OpcionesDeMenu.agregar antiguo[0..3].to_s
+          if nuevo!= nil
+            puts nuevo
+            puts Cliente.iniciarCliente 'Modificar'+"\n"+antiguo.to_s+"\n"+nuevo.to_s
+          end
+        end
+
+      when 3
+        print "Ingrese codigo del empleado que busca: "
+        codigo = gets.chomp
+        puts Cliente.iniciarCliente 'Buscar'+"\n"+codigo.to_s
       when 4
-        Archivos.listar
+        puts Cliente.iniciarCliente 'Listar'
       when 5
         break
     end

@@ -3,8 +3,9 @@ class Archivos
     aFile = File.new("Empleados.txt", "a+")
     if aFile
       aFile.syswrite(empleado+"\n")
+      return 'Agregado'
     else
-      puts "Unable to open file!"
+      return 'No se agregó'
     end
   end
 
@@ -13,23 +14,21 @@ class Archivos
     text=File.open('Empleados.txt').read
     text.gsub!(/\r\n?/, "\n")
     text.each_line do |line|
-      if line.to_s.include? codigo
-        print "#{line_num += 1} #{line}"
+      if line[0..3].to_s == codigo
+       return line.to_s
       end
     end
+    return 'No se encontro'
   end
 
   def self.editar anterior,nuevo
     File.write("Empleados.txt",File.open("Empleados.txt",&:read).gsub(anterior,nuevo))
+    return 'Hecho'
   end
 
   def self.listar
-    line_num=0
     text=File.open('Empleados.txt').read
-    text.gsub!(/\r\n?/, "\n")
-    text.each_line do |line|
-      print "#{line_num += 1} #{line}"
-    end
+    return text
   end
 
   def self.es_repetido parametro
