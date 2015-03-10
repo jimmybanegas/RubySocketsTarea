@@ -32,11 +32,11 @@ class Archivos
   end
 
   def self.es_repetido parametro
-    line_num=0
     text=File.open('Empleados.txt').read
     text.gsub!(/\r\n?/, "\n")
     text.each_line do |line|
       if line.to_s.include? parametro
+        puts parametro +'repetido'
         return true
       end
     end

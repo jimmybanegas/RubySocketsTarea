@@ -19,6 +19,8 @@ class Servidor
         connection.write Archivos.buscar(array_values[1])
       elsif array_values[0] == 'Listar'
         connection.write Archivos.listar
+      elsif array_values[0] == 'Repetido'
+        connection.write Archivos.es_repetido(array_values[1])
       end
     }
   end

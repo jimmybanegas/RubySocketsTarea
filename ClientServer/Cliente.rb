@@ -6,6 +6,7 @@ class Cliente
     a.write mensaje
 
     return  a.recv(1024).to_s
+
   end
 
 end
