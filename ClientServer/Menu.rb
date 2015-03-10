@@ -40,7 +40,7 @@ class Menu
         codigo = gets.chomp
         puts Cliente.iniciarCliente 'Buscar'+"\n"+codigo.to_s
       when 4
-        puts Cliente.iniciarCliente 'Listar'
+        OpcionesDeMenu.listar Cliente.iniciarCliente 'Listar'
       when 5
         break
     end
